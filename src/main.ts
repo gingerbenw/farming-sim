@@ -7,8 +7,8 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
 
   scale: {
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 800 || window.innerWidth,
+    height: 600 || window.innerHeight,
   },
 
   scene: Scenes,
@@ -16,7 +16,8 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: true,
+      gravity: { y: 0 },
+      debug: false,
     },
   },
 
