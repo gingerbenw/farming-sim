@@ -31,6 +31,7 @@ export class GameScene extends Phaser.Scene {
 
     aboveLayer.setDepth(10);
 
+    // Get spawn point from tileset
     const spawnPoint = map.findObject('Objects', (obj) => obj.name === 'Spawn Point');
 
     // Create a sprite with physics enabled via the physics system. The image used for the sprite has
@@ -46,24 +47,28 @@ export class GameScene extends Phaser.Scene {
     // Create the player's walking animations from the texture atlas. These are stored in the global
     // animation manager so any sprite can access them.
     const anims = this.anims;
+
     anims.create({
       key: 'misa-left-walk',
       frames: anims.generateFrameNames('atlas', { prefix: 'misa-left-walk.', start: 0, end: 3, zeroPad: 3 }),
       frameRate: 10,
       repeat: -1,
     });
+
     anims.create({
       key: 'misa-right-walk',
       frames: anims.generateFrameNames('atlas', { prefix: 'misa-right-walk.', start: 0, end: 3, zeroPad: 3 }),
       frameRate: 10,
       repeat: -1,
     });
+
     anims.create({
       key: 'misa-front-walk',
       frames: anims.generateFrameNames('atlas', { prefix: 'misa-front-walk.', start: 0, end: 3, zeroPad: 3 }),
       frameRate: 10,
       repeat: -1,
     });
+
     anims.create({
       key: 'misa-back-walk',
       frames: anims.generateFrameNames('atlas', { prefix: 'misa-back-walk.', start: 0, end: 3, zeroPad: 3 }),
@@ -83,25 +88,25 @@ export class GameScene extends Phaser.Scene {
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
   }
 
-  public update(time, delta): void {
+  public update(): void {
     const speed = 175;
     const prevVelocity = this.player.body.velocity.clone();
 
     // Stop any previous movement from the last frame
-    this.player.body.setVelocity(0);
+    this.player.setVelocity(0);
 
     // Horizontal movement
     if (this.cursorKeys.left.isDown) {
-      this.player.body.setVelocityX(-speed);
+      this.player.setVelocityX(-speed);
     } else if (this.cursorKeys.right.isDown) {
-      this.player.body.setVelocityX(speed);
+      this.player.setVelocityX(speed);
     }
 
     // Vertical movement
     if (this.cursorKeys.up.isDown) {
-      this.player.body.setVelocityY(-speed);
+      this.player.setVelocityY(-speed);
     } else if (this.cursorKeys.down.isDown) {
-      this.player.body.setVelocityY(speed);
+      this.player.setVelocityY(speed);
     }
 
     // Normalize and scale the velocity so that player can't move faster along a diagonal
