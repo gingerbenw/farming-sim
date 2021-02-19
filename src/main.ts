@@ -3,16 +3,12 @@ import Scenes from './scenes';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   title: 'Sample',
-
   type: Phaser.AUTO,
-
   scale: {
     width: 800 || window.innerWidth,
     height: 600 || window.innerHeight,
   },
-
   scene: Scenes,
-
   physics: {
     default: 'arcade',
     arcade: {
@@ -20,7 +16,6 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
       debug: false,
     },
   },
-
   parent: 'game',
   backgroundColor: '#000000',
 };

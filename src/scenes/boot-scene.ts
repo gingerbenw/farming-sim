@@ -70,19 +70,8 @@ export class BootScene extends Phaser.Scene {
    * is currently active, so they can be accessed anywhere.
    */
   private loadAssets() {
-    // Load sample assets
-
-    // Source: Open Game Art
-    this.load.image('man', 'assets/sprites/character.png');
-    // this.load.image('map', 'assets/map.png');
-    // this.load.image('mario-tiles', 'assets/tilesets/super-mario-tiles.png');
     this.load.image('tiles', 'assets/tilesets/tuxmon-sample-32px-extruded.png');
     this.load.tilemapTiledJSON('map', 'assets/tilemaps/tuxemon-town.json');
-
-    this.load.atlas(
-      'atlas',
-      'https://www.mikewesthad.com/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.png',
-      'https://www.mikewesthad.com/phaser-3-tilemap-blog-posts/post-1/assets/atlas/atlas.json',
-    );
+    this.load.atlas('atlas', 'assets/atlas/atlas.png', 'assets/atlas/atlas.json');
   }
 }
